@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Port name:</b>
+  <%= @port.port_name %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @port.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @port.state %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @port.country %>
+</p>
+
+<p>
+  <b>Ocean:</b>
+  <%= @port.ocean %>
+</p>
+
+
+<%= link_to 'Edit', edit_port_path(@port) %> |
+<%= link_to 'Back', ports_path %>

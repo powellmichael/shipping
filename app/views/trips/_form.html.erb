@@ -1,0 +1,45 @@
+<%= form_for(@trip) do |f| %>
+  <% if @trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+      <ul>
+      <% @trip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :sailing_date_at_origin %><br />
+    <%= f.date_select :sailing_date_at_origin %>
+  </div>
+  <div class="field">
+    <%= f.label :sailing_date_at_destination %><br />
+    <%= f.date_select :sailing_date_at_destination %>
+  </div>
+  <div class="field">
+    <%= f.label :departure_date %><br />
+    <%= f.date_select :departure_date %>
+  </div>
+  <div class="field">
+    <%= f.label :origin_port_id %><br />
+    <%= collection_select (:trip, :origin_port_id, Port.all, :id, :port_name) %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_port_id %><br />
+    <%= collection_select (:trip, :destination_port_id, Port.all, :id, :port_name) %>
+  </div>
+  <div class="field">
+    <%= f.label :ship_id %><br />
+    <%= collection_select (:trip, :ship_id, Ship.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

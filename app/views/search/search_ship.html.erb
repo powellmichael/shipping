@@ -1,0 +1,42 @@
+<%=form_tag ("/search_ship") %>
+  <div class="field">
+    <%= label_tag (:origin_port_id, "Origin Port: ") %>
+    <%= collection_select (:trip,:origin_port_id, Port.all, :id, :port_name) %>
+  </div>
+  <div class="field">
+    <%= label_tag (:origin_port_id, "Destination Port: ") %>
+    <%= collection_select (:trip,:destination_port_id, Port.all, :id, :port_name) %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Search" %>
+  </div>
+
+  <% if @trips != nil %>
+    <table>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td>
+          <b>Ship Name</b>
+        </td>
+        <td>
+          <b>Port of Origin</b>
+        </td>
+        <td>
+          <b>Destination Port</b>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= trip.ship.name %>
+        </td>
+        <td>
+          <%= trip.origin_port.port_name %>
+        </td>
+        <td>
+          <%= trip.destination_port.port_name %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  <% end %>

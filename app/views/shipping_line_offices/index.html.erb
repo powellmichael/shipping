@@ -1,0 +1,23 @@
+<h1>Listing shipping_line_offices</h1>
+
+<table>
+  <tr>
+    <th>Area address</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shipping_line_offices.each do |shipping_line_office| %>
+  <tr>
+    <td><%= shipping_line_office.area_address %></td>
+    <td><%= link_to 'Show', shipping_line_office %></td>
+    <td><%= link_to 'Edit', edit_shipping_line_office_path(shipping_line_office) %></td>
+    <td><%= link_to 'Destroy', shipping_line_office, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shipping line office', new_shipping_line_office_path %>

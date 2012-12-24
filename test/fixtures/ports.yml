@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  port_name: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  ocean: MyString
+
+two:
+  port_name: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  ocean: MyString

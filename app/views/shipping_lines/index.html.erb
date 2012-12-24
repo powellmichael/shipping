@@ -1,0 +1,39 @@
+<h1>Listing shipping_lines</h1>
+
+<table>
+  <tr>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>Contact person</th>
+    <th>Contact email</th>
+    <th>Contact phone</th>
+    <th>Company name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shipping_lines.each do |shipping_line| %>
+  <tr>
+    <td><%= shipping_line.address %></td>
+    <td><%= shipping_line.city %></td>
+    <td><%= shipping_line.state %></td>
+    <td><%= shipping_line.country %></td>
+    <td><%= shipping_line.contact_person %></td>
+    <td><%= shipping_line.contact_email %></td>
+    <td><%= shipping_line.contact_phone %></td>
+    <td><%= shipping_line.company_name %></td>
+    <td><%= shipping_line.description %></td>
+    <td><%= link_to 'Show', shipping_line %></td>
+    <td><%= link_to 'Edit', edit_shipping_line_path(shipping_line) %></td>
+    <td><%= link_to 'Destroy', shipping_line, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shipping line', new_shipping_line_path %>
