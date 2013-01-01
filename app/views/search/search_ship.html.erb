@@ -1,16 +1,24 @@
-<%=form_tag ("/search_ship") %>
+<%= form_for (@trip, :url => "/search_ship") do |f| %>
   <div class="field">
-    <%= label_tag (:origin_port_id, "Origin Port: ") %>
-    <%= collection_select (:trip,:origin_port_id, Port.all, :id, :port_name) %>
+    <%= f.label (:origin_port_id, "Origin Port: ") %>
+    <%= collection_select (:trip, :origin_port_id, Port.all, :id, :port_name, :prompt => true) %>
   </div>
   <div class="field">
-    <%= label_tag (:origin_port_id, "Destination Port: ") %>
-    <%= collection_select (:trip,:destination_port_id, Port.all, :id, :port_name) %>
+    <%= f.label (:origin_country, "Origin Country: ") %>
+      <%= collection_select (:origin_port, :country, Country.all, :country_name, :country_name, :prompt => true) %>
+  </div>
+  <div class="field">
+    <%= f.label (:destination_port_id, "Destination Port: ") %>
+    <%= collection_select (:trip, :destination_port_id, Port.all, :id, :port_name, :prompt => true) %>
+  </div>
+  <div class="field">
+    <%= f.label (:destination_country, "Destination Country: ") %>
+    <%= collection_select (:destination_port, :country, Country.all, :country_name, :country_name, :prompt => true) %>
   </div>
   <div class="actions">
-    <%= submit_tag "Search" %>
+    <%= f.submit "Search" %>
   </div>
-
+<% end %>
   <% if @trips != nil %>
     <table>
     <% @trips.each do |trip| %>
@@ -24,6 +32,12 @@
         <td>
           <b>Destination Port</b>
         </td>
+        <td>
+          <b>Departure Date</b>
+        </td>
+        <td>
+          <b>Voyage Information</b>
+        </td>
       </tr>
 
       <tr>
@@ -35,6 +49,12 @@
         </td>
         <td>
           <%= trip.destination_port.port_name %>
+        </td>
+        <td>
+          <%= trip.departure_date %>
+        </td>
+        <td>
+          <%= trip.description %>
         </td>
       </tr>
     <% end %>
